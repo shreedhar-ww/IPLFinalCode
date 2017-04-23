@@ -1,0 +1,45 @@
+﻿@model List<IPL.Entity.BidHistory>
+@using IPL.Entity;
+<table class="table current-bid-history">
+    <thead>
+        <tr>
+            <td>Question</td>
+            <td>Answer</td>
+            <td>Points</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Question<br><span style="font-size:11px">(@item.Match)</span></td>
+                    <td>@item.Answer</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Points))
+                        {
+                            @item.Points
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="3">No Data Found</td></tr>
+        }
+    </tbody>
+
+</table>
+<script>
+    var isBidActive = '@ViewBag.isBidActive';
+    if (!isBidActive) {
+        $(".carousel-inner .active").find(".tg-btnbox").hide();
+    }
+    else { $(".carousel-inner .active").find(".tg-btnbox").show(); }
+</script>

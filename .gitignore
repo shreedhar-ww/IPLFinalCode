@@ -1,0 +1,7 @@
+*.dll
+*.xml
+bin/
+*.obj
+debug/
+Release/
+packages/

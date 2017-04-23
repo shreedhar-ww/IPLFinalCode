@@ -1,0 +1,22 @@
+﻿@using IPL.Entity
+@model IPLBidder
+@using (Ajax.BeginForm("AddPoints", "User", new AjaxOptions { OnSuccess = "fn_BidPointsAdded" }))
+{
+    @Html.HiddenFor(model=>model.userId)
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Bid Points</h4>
+    </div>
+    <div class="modal-body">
+        @Html.TextBoxFor(model => model.points, new { @class = "form-control", @maxlength = 7, @placeholder = "Points" })
+        @Html.ValidationMessageFor(model => model.points)
+        <br>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+}
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
